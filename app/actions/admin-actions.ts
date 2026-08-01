@@ -12,6 +12,9 @@ export async function updateUserStatusAction(
   _previousState: ActionState,
   _formData: FormData,
 ): Promise<ActionState> {
+  void _previousState;
+  void _formData;
+
   try {
     await jsonPrivateApi<User>(`/api/admin/users/${userId}/status`, "PATCH", {
       activeStatus,
@@ -74,6 +77,9 @@ export async function deleteCategoryAction(
   _previousState: ActionState,
   _formData: FormData,
 ): Promise<ActionState> {
+  void _previousState;
+  void _formData;
+
   try {
     await jsonPrivateApi<Category>(`/api/categories/${categoryId}`, "DELETE");
     revalidatePath("/dashboard/admin/categories");

@@ -1,42 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
   <defs>
-    <linearGradient id="plumBg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0284c7"/>
-      <stop offset="100%" stop-color="#0369a1"/>
+    <linearGradient id="plumBgPurple" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b0764"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
     </linearGradient>
-    <linearGradient id="pipeGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#e2e8f0"/>
-      <stop offset="100%" stop-color="#94a3b8"/>
-    </linearGradient>
-    <linearGradient id="dropGrad" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#0284c7"/>
+    <linearGradient id="dropOrange" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff6b00"/>
+      <stop offset="100%" stop-color="#ea580c"/>
     </linearGradient>
   </defs>
 
-  <rect width="600" height="400" rx="32" fill="url(#plumBg)"/>
-  <circle cx="500" cy="80" r="140" fill="#ffffff" fill-opacity="0.08"/>
-  <circle cx="100" cy="320" r="160" fill="#ffffff" fill-opacity="0.05"/>
+  <rect width="600" height="400" rx="32" fill="url(#plumBgPurple)"/>
+  <circle cx="500" cy="80" r="140" fill="#a855f7" fill-opacity="0.12"/>
 
-  <!-- Water Drops -->
-  <path d="M 450 140 C 450 140 480 180 480 200 C 480 216.5 466.5 230 450 230 C 433.5 230 420 216.5 420 200 C 420 180 450 140 450 140 Z" fill="url(#dropGrad)"/>
+  <!-- Water Drop in Flame Orange -->
+  <path d="M 450 140 C 450 140 480 180 480 200 C 480 216.5 466.5 230 450 230 C 433.5 230 420 216.5 420 200 C 420 180 450 140 450 140 Z" fill="url(#dropOrange)"/>
 
   <!-- Pipe System -->
-  <g stroke="url(#pipeGrad)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#a855f7" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 120 260 L 260 260 L 260 140 L 380 140"/>
   </g>
-  <!-- Pipe Joints -->
-  <circle cx="260" cy="260" r="26" fill="#64748b"/>
-  <circle cx="260" cy="140" r="26" fill="#64748b"/>
+  <circle cx="260" cy="260" r="26" fill="#ff6b00"/>
+  <circle cx="260" cy="140" r="26" fill="#ff6b00"/>
 
   <!-- Wrench Tool -->
   <g transform="translate(260, 160) rotate(-35)">
-    <rect x="0" y="0" width="180" height="32" rx="16" fill="#f59e0b"/>
-    <circle cx="160" cy="16" r="28" fill="#d97706"/>
-    <circle cx="160" cy="16" r="14" fill="#0369a1"/>
+    <rect x="0" y="0" width="180" height="32" rx="16" fill="#ff6b00"/>
+    <circle cx="160" cy="16" r="28" fill="#7c3aed"/>
+    <circle cx="160" cy="16" r="14" fill="#ffffff"/>
   </g>
 
   <!-- Title Badge -->
-  <rect x="40" y="40" width="160" height="44" rx="22" fill="#ffffff" fill-opacity="0.2"/>
-  <text x="120" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="16" fill="#ffffff">PLUMBING</text>
+  <rect x="40" y="40" width="160" height="44" rx="22" fill="#181024" stroke="#ff6b00" stroke-width="2"/>
+  <text x="120" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="16" fill="#ffffff">PLUMBING</text>
 </svg>

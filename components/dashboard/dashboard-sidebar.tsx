@@ -40,28 +40,30 @@ const items: Record<Role, SidebarItem[]> = {
 
 export function DashboardSidebar({ role }: { role: Role }) {
   const pathname = usePathname();
+
   return (
-    <aside className="w-full border-b border-border/60 bg-card/60 backdrop-blur-md md:min-h-[calc(100vh-4rem)] md:w-64 md:border-b-0 md:border-r">
-      <div className="p-4 hidden md:block border-b border-border/40">
-        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-          {role} Workspace
-        </span>
+    <aside className="w-full border-b border-border/70 bg-card/80 backdrop-blur-xl md:sticky md:top-16 md:h-[calc(100vh-4rem)] md:w-64 md:shrink-0 md:border-b-0 md:border-r">
+      <div className="hidden border-b border-border/60 px-5 py-5 md:block">
+        <p className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-muted-foreground">Workspace</p>
+        <p className="mt-1 text-sm font-extrabold text-foreground">{role.charAt(0) + role.slice(1).toLowerCase()} Portal</p>
       </div>
-      <nav className="flex gap-1.5 overflow-x-auto p-3 md:flex-col md:p-4">
+      <nav className="flex gap-2 overflow-x-auto p-3 md:flex-col md:gap-1.5 md:p-4" aria-label="Dashboard navigation">
         {items[role].map((item) => {
-          const active = pathname === item.href;
+          const isOverview = item.href === `/dashboard/${role.toLowerCase()}`;
+          const active = isOverview ? pathname === item.href : pathname === item.href || pathname.startsWith(`${item.href}/`);
+
           return (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "group relative flex shrink-0 items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all duration-200",
+                "group flex shrink-0 items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all",
                 active
                   ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground",
               )}
             >
-              <item.icon className={cn("size-4 shrink-0 transition-transform group-hover:scale-110", active ? "text-primary-foreground" : "text-primary")} />
+              <item.icon className={cn("size-4 shrink-0", active ? "text-primary-foreground" : "text-primary")} />
               <span>{item.label}</span>
             </Link>
           );

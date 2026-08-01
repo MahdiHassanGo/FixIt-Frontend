@@ -5,20 +5,24 @@ export function StatCard({
   label,
   value,
   icon: Icon,
+  hint,
 }: {
   label: string;
   value: string | number;
   icon: LucideIcon;
+  hint?: string;
 }) {
   return (
-    <Card className="rounded-2xl border border-border/70 bg-card hover:border-primary/40 transition-all duration-300 shadow-xs">
-      <CardContent className="flex items-center justify-between p-5">
-        <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
-          <p className="text-2xl font-black tracking-tight text-foreground">{value}</p>
+    <Card className="relative overflow-hidden border-border/70 bg-card/95">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-teal-400 to-amber-400" />
+      <CardContent className="flex items-start justify-between gap-4 p-5 pt-6">
+        <div className="min-w-0 space-y-1">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">{label}</p>
+          <p className="truncate text-2xl font-black tracking-tight sm:text-3xl">{value}</p>
+          {hint ? <p className="text-xs text-muted-foreground">{hint}</p> : null}
         </div>
-        <div className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-primary/20 to-teal-500/10 text-primary shadow-xs border border-primary/20">
-          <Icon className="size-6" />
+        <div className="grid size-11 shrink-0 place-items-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+          <Icon className="size-5" />
         </div>
       </CardContent>
     </Card>

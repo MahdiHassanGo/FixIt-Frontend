@@ -16,7 +16,7 @@ export function ReviewForm({ bookingId }: { bookingId: string }) {
       <input type="hidden" name="bookingId" value={bookingId} />
       <div className="space-y-2">
         <Label htmlFor={`rating-${bookingId}`}>Rating</Label>
-        <select id={`rating-${bookingId}`} name="rating" defaultValue="5" className="h-10 w-full rounded-md border bg-background px-3 text-sm">
+        <select id={`rating-${bookingId}`} name="rating" defaultValue="5" className="h-10 w-full rounded-xl border border-input bg-background shadow-xs px-3 text-sm">
           {[5,4,3,2,1].map((rating) => <option key={rating} value={rating}>{rating} star{rating > 1 ? "s" : ""}</option>)}
         </select>
         <FieldError messages={state?.fieldErrors?.rating} />

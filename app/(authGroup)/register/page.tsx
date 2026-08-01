@@ -4,7 +4,7 @@ import { Wrench } from "lucide-react";
 import { RegisterForm } from "@/components/auth/register-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const metadata: Metadata = { title: "Register | FixItNow" };
+export const metadata: Metadata = { title: "Create Account" };
 
 export default function RegisterPage() {
   return (

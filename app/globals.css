@@ -4,25 +4,46 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.995 0.003 175);
-  --foreground: oklch(0.16 0.025 210);
+  --background: oklch(0.985 0.006 285);
+  --foreground: oklch(0.14 0.035 285);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.025 210);
+  --card-foreground: oklch(0.14 0.035 285);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.025 210);
-  --primary: oklch(0.50 0.16 175);
-  --primary-foreground: oklch(0.99 0.005 175);
-  --secondary: oklch(0.96 0.025 175);
-  --secondary-foreground: oklch(0.24 0.06 175);
-  --muted: oklch(0.965 0.01 190);
-  --muted-foreground: oklch(0.48 0.035 210);
-  --accent: oklch(0.78 0.17 68);
-  --accent-foreground: oklch(0.18 0.04 68);
-  --destructive: oklch(0.58 0.22 28);
-  --border: oklch(0.91 0.015 185);
-  --input: oklch(0.91 0.015 185);
-  --ring: oklch(0.52 0.16 175);
-  --radius: 0.875rem;
+  --popover-foreground: oklch(0.14 0.035 285);
+  --primary: oklch(0.52 0.24 285); /* Electric Purple */
+  --primary-foreground: oklch(0.99 0.005 285);
+  --secondary: oklch(0.68 0.22 42); /* Vibrant Orange */
+  --secondary-foreground: oklch(0.99 0.005 42);
+  --muted: oklch(0.96 0.015 285);
+  --muted-foreground: oklch(0.48 0.04 285);
+  --accent: oklch(0.64 0.23 38); /* Solar Flame Orange Accent */
+  --accent-foreground: oklch(0.99 0.005 38);
+  --destructive: oklch(0.58 0.24 25);
+  --border: oklch(0.91 0.02 285);
+  --input: oklch(0.91 0.02 285);
+  --ring: oklch(0.58 0.24 285);
+  --radius: 1rem;
+}
+
+.dark {
+  --background: oklch(0.12 0.03 285); /* Deep Obsidian / Black */
+  --foreground: oklch(0.98 0.005 285);
+  --card: oklch(0.16 0.035 285);
+  --card-foreground: oklch(0.98 0.005 285);
+  --popover: oklch(0.16 0.035 285);
+  --popover-foreground: oklch(0.98 0.005 285);
+  --primary: oklch(0.62 0.25 285);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.68 0.22 42);
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.20 0.03 285);
+  --muted-foreground: oklch(0.70 0.03 285);
+  --accent: oklch(0.68 0.22 42);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.58 0.24 25);
+  --border: oklch(0.24 0.04 285);
+  --input: oklch(0.24 0.04 285);
+  --ring: oklch(0.62 0.25 285);
 }
 
 @theme inline {
@@ -44,8 +65,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 6px);
 }
@@ -72,28 +93,52 @@ button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Custom Design & Animation Utilities */
+/* Custom Purple + Black + Orange Utilities */
 .glass-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(124, 58, 237, 0.15);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, oklch(0.48 0.17 175) 0%, oklch(0.55 0.16 195) 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 40%, #ff6b00 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+.gradient-orange-text {
+  background: linear-gradient(135deg, #ff6b00 0%, #f97316 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glow-purple {
+  background: radial-gradient(circle at 30% 20%, rgba(124, 58, 237, 0.18) 0%, rgba(255, 255, 255, 0) 65%);
+}
+
+.hero-glow-orange {
+  background: radial-gradient(circle at 70% 80%, rgba(255, 107, 0, 0.15) 0%, rgba(255, 255, 255, 0) 65%);
 }
 
 .hover-lift {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 30px -10px rgba(15, 118, 110, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 35px -10px rgba(124, 58, 237, 0.2);
+}
+
+.glow-button-purple {
+  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.45);
+}
+.glow-button-purple:hover {
+  box-shadow: 0 8px 30px 0px rgba(124, 58, 237, 0.65);
+}
+
+.glow-button-orange {
+  box-shadow: 0 4px 20px -2px rgba(255, 107, 0, 0.45);
+}
+.glow-button-orange:hover {
+  box-shadow: 0 8px 30px 0px rgba(255, 107, 0, 0.65);
 }

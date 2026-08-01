@@ -1,32 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
   <defs>
-    <linearGradient id="elecBg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#4c1d95"/>
+    <linearGradient id="elecBgPurple" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#581c87"/>
+      <stop offset="100%" stop-color="#0f071a"/>
     </linearGradient>
-    <linearGradient id="boltGrad" x1="0" y1="0" x2="0" y2="200" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#fbbf24"/>
+    <linearGradient id="orangeBolt" x1="0" y1="0" x2="0" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff6b00"/>
       <stop offset="100%" stop-color="#f59e0b"/>
     </linearGradient>
   </defs>
 
-  <rect width="600" height="400" rx="32" fill="url(#elecBg)"/>
-  <circle cx="120" cy="100" r="140" fill="#ffffff" fill-opacity="0.06"/>
-  <circle cx="480" cy="300" r="160" fill="#ffffff" fill-opacity="0.05"/>
+  <rect width="600" height="400" rx="32" fill="url(#elecBgPurple)"/>
+  <circle cx="120" cy="100" r="140" fill="#a855f7" fill-opacity="0.15"/>
 
   <!-- Lightbulb Base -->
   <g transform="translate(180, 80)">
     <!-- Bulb Glass -->
-    <path d="M 120 40 C 60 40 20 85 20 145 C 20 185 45 210 70 230 L 170 230 C 195 210 220 185 220 145 C 220 85 180 40 120 40 Z" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="6"/>
-    <!-- Socket -->
-    <rect x="75" y="235" width="90" height="30" rx="8" fill="#94a3b8"/>
-    <rect x="85" y="265" width="70" height="20" rx="6" fill="#64748b"/>
+    <path d="M 120 40 C 60 40 20 85 20 145 C 20 185 45 210 70 230 L 170 230 C 195 210 220 185 220 145 C 220 85 180 40 120 40 Z" fill="#ffffff" fill-opacity="0.12" stroke="#a855f7" stroke-width="6"/>
+    <rect x="75" y="235" width="90" height="30" rx="8" fill="#ff6b00"/>
+    <rect x="85" y="265" width="70" height="20" rx="6" fill="#7c3aed"/>
 
     <!-- Lightning Bolt Center -->
-    <path d="M 130 70 L 85 140 L 120 140 L 100 210 L 160 125 L 125 125 Z" fill="url(#boltGrad)"/>
+    <path d="M 130 70 L 85 140 L 120 140 L 100 210 L 160 125 L 125 125 Z" fill="url(#orangeBolt)"/>
   </g>
 
   <!-- Title Badge -->
-  <rect x="40" y="40" width="170" height="44" rx="22" fill="#ffffff" fill-opacity="0.2"/>
-  <text x="125" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="16" fill="#ffffff">ELECTRICAL</text>
+  <rect x="40" y="40" width="170" height="44" rx="22" fill="#181024" stroke="#7c3aed" stroke-width="2"/>
+  <text x="125" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="16" fill="#ffffff">ELECTRICAL</text>
 </svg>

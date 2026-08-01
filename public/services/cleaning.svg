@@ -1,38 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
   <defs>
-    <linearGradient id="cleanBg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#059669"/>
-      <stop offset="100%" stop-color="#047857"/>
-    </linearGradient>
-    <linearGradient id="sparkleGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#a7f3d0"/>
-      <stop offset="100%" stop-color="#34d399"/>
+    <linearGradient id="cleanBgPurple" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#1e1035"/>
     </linearGradient>
   </defs>
 
-  <rect width="600" height="400" rx="32" fill="url(#cleanBg)"/>
-  <circle cx="480" cy="100" r="140" fill="#ffffff" fill-opacity="0.08"/>
+  <rect width="600" height="400" rx="32" fill="url(#cleanBgPurple)"/>
 
-  <!-- Spray Bottle & Bubbles -->
+  <!-- Spray Bottle -->
   <g transform="translate(180, 70)">
-    <!-- Bottle Base -->
     <rect x="70" y="130" width="100" height="150" rx="28" fill="#ffffff" fill-opacity="0.9"/>
-    <path d="M 90 130 L 105 80 L 135 80 L 150 130 Z" fill="#e2e8f0"/>
-    <!-- Spray Head -->
-    <rect x="100" y="55" width="40" height="30" rx="6" fill="#f59e0b"/>
-    <path d="M 100 65 L 60 70 L 60 85 L 100 80 Z" fill="#d97706"/>
+    <path d="M 90 130 L 105 80 L 135 80 L 150 130 Z" fill="#7c3aed"/>
+    <rect x="100" y="55" width="40" height="30" rx="6" fill="#ff6b00"/>
+    <path d="M 100 65 L 60 70 L 60 85 L 100 80 Z" fill="#ea580c"/>
 
-    <!-- Bubbles & Sparkles -->
-    <circle cx="40" cy="50" r="14" fill="url(#sparkleGrad)" fill-opacity="0.8"/>
-    <circle cx="20" cy="90" r="8" fill="url(#sparkleGrad)" fill-opacity="0.7"/>
-    <circle cx="210" cy="90" r="18" fill="url(#sparkleGrad)" fill-opacity="0.8"/>
-    <circle cx="190" cy="160" r="10" fill="url(#sparkleGrad)" fill-opacity="0.6"/>
+    <!-- Bubbles -->
+    <circle cx="40" cy="50" r="14" fill="#ff6b00" fill-opacity="0.8"/>
+    <circle cx="20" cy="90" r="8" fill="#c084fc" fill-opacity="0.8"/>
+    <circle cx="210" cy="90" r="18" fill="#ff6b00" fill-opacity="0.8"/>
 
     <!-- Sparkle Star -->
-    <path d="M 230 40 L 235 55 L 250 60 L 235 65 L 230 80 L 225 65 L 210 60 L 225 55 Z" fill="#fef08a"/>
+    <path d="M 230 40 L 235 55 L 250 60 L 235 65 L 230 80 L 225 65 L 210 60 L 225 55 Z" fill="#ff6b00"/>
   </g>
 
   <!-- Title Badge -->
-  <rect x="40" y="40" width="160" height="44" rx="22" fill="#ffffff" fill-opacity="0.2"/>
-  <text x="120" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="16" fill="#ffffff">CLEANING</text>
+  <rect x="40" y="40" width="160" height="44" rx="22" fill="#181024" stroke="#ff6b00" stroke-width="2"/>
+  <text x="120" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="16" fill="#ffffff">CLEANING</text>
 </svg>

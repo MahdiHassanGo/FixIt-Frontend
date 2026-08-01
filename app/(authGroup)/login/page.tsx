@@ -5,7 +5,7 @@ import { Wrench } from "lucide-react";
 import { LoginForm } from "@/components/auth/login-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const metadata: Metadata = { title: "Login | FixItNow" };
+export const metadata: Metadata = { title: "Login" };
 
 export default function LoginPage() {
   return (

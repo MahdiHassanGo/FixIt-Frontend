@@ -65,6 +65,9 @@ export async function cancelBookingAction(
   _previousState: ActionState,
   _formData: FormData,
 ): Promise<ActionState> {
+  void _previousState;
+  void _formData;
+
   try {
     await jsonPrivateApi<Booking>(`/api/bookings/${bookingId}/cancel`, "PATCH");
     revalidatePath("/dashboard/customer");
@@ -100,6 +103,9 @@ export async function createCheckoutAction(
   _previousState: ActionState,
   _formData: FormData,
 ): Promise<ActionState> {
+  void _previousState;
+  void _formData;
+
   try {
     const response = await jsonPrivateApi<{
       payment: unknown;

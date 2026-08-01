@@ -129,6 +129,9 @@ export async function deleteServiceAction(
   _previousState: ActionState,
   _formData: FormData,
 ): Promise<ActionState> {
+  void _previousState;
+  void _formData;
+
   try {
     await jsonPrivateApi<Service>(`/api/services/${serviceId}`, "DELETE");
     revalidatePath("/dashboard/technician/services");
@@ -145,6 +148,9 @@ export async function updateBookingStatusAction(
   _previousState: ActionState,
   _formData: FormData,
 ): Promise<ActionState> {
+  void _previousState;
+  void _formData;
+
   try {
     await jsonPrivateApi<Booking>(
       `/api/technician/bookings/${bookingId}/status`,

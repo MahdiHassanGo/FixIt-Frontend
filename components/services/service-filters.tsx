@@ -3,23 +3,36 @@ import { Filter, RotateCcw, Search, MapPin, DollarSign, Star, ArrowUpDown } from
 import { Button } from "@/components/ui/button";
 import type { Category } from "@/lib/types";
 
+export type ServiceFilterValues = {
+  searchTerm?: string;
+  categoryId?: string;
+  location?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  minRating?: string;
+  sortBy?: string;
+  sortOrder?: string;
+};
+
 type ServiceFiltersProps = {
   categories: Category[];
+  initial?: ServiceFilterValues;
 };
 
 export function ServiceFilters({
   categories,
+  initial = {},
 }: ServiceFiltersProps) {
   return (
-    <aside className="h-fit rounded-2xl border border-border/70 bg-card p-6 shadow-sm space-y-6">
-      <div className="flex items-center justify-between gap-3 border-b border-border/40 pb-4">
-        <h2 className="font-bold text-base flex items-center gap-2 text-foreground">
-          <Filter className="size-4 text-primary" /> Filter Services
+    <aside className="h-fit rounded-3xl border border-purple-500/20 bg-card p-6 shadow-sm space-y-6">
+      <div className="flex items-center justify-between gap-3 border-b border-purple-500/15 pb-4">
+        <h2 className="font-extrabold text-base flex items-center gap-2 text-foreground">
+          <Filter className="size-4 text-orange-500" /> Filter Services
         </h2>
 
         <Link
           href="/services"
-          className="text-xs font-semibold text-primary hover:text-primary/80 flex items-center gap-1 transition-colors"
+          className="text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1 transition-colors"
         >
           <RotateCcw className="size-3" /> Reset
         </Link>
@@ -39,13 +52,14 @@ export function ServiceFilters({
             Search
           </label>
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-purple-500" />
             <input
               id="searchTerm"
               name="searchTerm"
               type="search"
+              defaultValue={initial.searchTerm || ""}
               placeholder="Plumbing, electrical..."
-              className="h-10 w-full rounded-xl border border-border bg-background pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
+              className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background pl-9 pr-3 text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition"
             />
           </div>
         </div>
@@ -61,8 +75,8 @@ export function ServiceFilters({
           <select
             id="categoryId"
             name="categoryId"
-            defaultValue=""
-            className="h-10 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition cursor-pointer"
+            defaultValue={initial.categoryId || ""}
+            className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background px-3 text-sm font-medium outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition cursor-pointer"
           >
             <option value="">All Categories</option>
             {categories.map((category) => (
@@ -85,13 +99,14 @@ export function ServiceFilters({
             Location
           </label>
           <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-purple-500" />
             <input
               id="location"
               name="location"
               type="text"
+              defaultValue={initial.location || ""}
               placeholder="Enter city or area..."
-              className="h-10 w-full rounded-xl border border-border bg-background pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
+              className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background pl-9 pr-3 text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition"
             />
           </div>
         </div>
@@ -106,15 +121,16 @@ export function ServiceFilters({
               Min Price
             </label>
             <div className="relative">
-              <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+              <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-orange-500" />
               <input
                 id="minPrice"
                 name="minPrice"
                 type="number"
                 min="0"
                 step="0.01"
+                defaultValue={initial.minPrice || ""}
                 placeholder="0"
-                className="h-10 w-full rounded-xl border border-border bg-background pl-7 pr-2 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
+                className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background pl-7 pr-2 text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition"
               />
             </div>
           </div>
@@ -127,15 +143,16 @@ export function ServiceFilters({
               Max Price
             </label>
             <div className="relative">
-              <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+              <DollarSign className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-orange-500" />
               <input
                 id="maxPrice"
                 name="maxPrice"
                 type="number"
                 min="0"
                 step="0.01"
+                defaultValue={initial.maxPrice || ""}
                 placeholder="500"
-                className="h-10 w-full rounded-xl border border-border bg-background pl-7 pr-2 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
+                className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background pl-7 pr-2 text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition"
               />
             </div>
           </div>
@@ -150,12 +167,12 @@ export function ServiceFilters({
             Minimum Rating
           </label>
           <div className="relative">
-            <Star className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-amber-500 fill-amber-500" />
+            <Star className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-orange-500 fill-orange-500" />
             <select
               id="minRating"
               name="minRating"
-              defaultValue=""
-              className="h-10 w-full rounded-xl border border-border bg-background pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition cursor-pointer"
+              defaultValue={initial.minRating || ""}
+              className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background pl-9 pr-3 text-sm font-medium outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition cursor-pointer"
             >
               <option value="">Any Rating</option>
               <option value="4">4+ Stars ★★★★</option>
@@ -175,12 +192,12 @@ export function ServiceFilters({
             Sort By
           </label>
           <div className="relative">
-            <ArrowUpDown className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+            <ArrowUpDown className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-purple-500" />
             <select
               id="sortBy"
               name="sortBy"
-              defaultValue="createdAt"
-              className="h-10 w-full rounded-xl border border-border bg-background pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition cursor-pointer"
+              defaultValue={initial.sortBy || "createdAt"}
+              className="h-11 w-full rounded-2xl border border-purple-500/20 bg-background pl-9 pr-3 text-sm font-medium outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition cursor-pointer"
             >
               <option value="createdAt">Newest First</option>
               <option value="price">Price</option>
@@ -192,12 +209,12 @@ export function ServiceFilters({
         <input
           type="hidden"
           name="sortOrder"
-          value="desc"
+          value={initial.sortOrder || "desc"}
         />
 
         <Button
           type="submit"
-          className="w-full rounded-xl shadow-md shadow-primary/20"
+          className="w-full rounded-2xl shadow-lg shadow-purple-600/30"
         >
           Apply Filters
         </Button>

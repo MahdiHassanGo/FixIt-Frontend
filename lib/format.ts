@@ -1,17 +1,23 @@
 import type { BookingStatus, DayOfWeek } from "@/lib/types";
 
 export function formatMoney(value: string | number, currency = "USD") {
+  const amount = Number(value);
+  if (!Number.isFinite(amount)) return "—";
+
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: currency.toUpperCase(),
-  }).format(Number(value));
+  }).format(amount);
 }
 
 export function formatDateTime(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "—";
+
   return new Intl.DateTimeFormat("en-US", {
     dateStyle: "medium",
     timeStyle: "short",
-  }).format(new Date(value));
+  }).format(date);
 }
 
 export function titleCase(value: string) {
@@ -33,6 +39,5 @@ export const days: DayOfWeek[] = [
 ];
 
 export function canCustomerCancel(status: BookingStatus) {
-  return !["IN_PROGRESS", "COMPLETED", "CANCELLED"].includes(status);
+  return ["REQUESTED", "ACCEPTED", "PAID"].includes(status);
 }
-
