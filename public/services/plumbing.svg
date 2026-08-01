@@ -1,2 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400"><rect width="640" height="400" fill="#e8f7ef"/><circle cx="520" cy="90" r="70" fill="#b8e7cc"/><rect x="90" y="85" width="360" height="240" rx="28" fill="#fff" stroke="#20845a" stroke-width="10"/><path d="M170 260l80-80 60 60 100-110" fill="none" stroke="#f59e0b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><text x="320" y="370" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#176646">Plumbing Service</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="plumBg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="pipeGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="dropGrad" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
 
+  <rect width="600" height="400" rx="32" fill="url(#plumBg)"/>
+  <circle cx="500" cy="80" r="140" fill="#ffffff" fill-opacity="0.08"/>
+  <circle cx="100" cy="320" r="160" fill="#ffffff" fill-opacity="0.05"/>
+
+  <!-- Water Drops -->
+  <path d="M 450 140 C 450 140 480 180 480 200 C 480 216.5 466.5 230 450 230 C 433.5 230 420 216.5 420 200 C 420 180 450 140 450 140 Z" fill="url(#dropGrad)"/>
+
+  <!-- Pipe System -->
+  <g stroke="url(#pipeGrad)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 120 260 L 260 260 L 260 140 L 380 140"/>
+  </g>
+  <!-- Pipe Joints -->
+  <circle cx="260" cy="260" r="26" fill="#64748b"/>
+  <circle cx="260" cy="140" r="26" fill="#64748b"/>
+
+  <!-- Wrench Tool -->
+  <g transform="translate(260, 160) rotate(-35)">
+    <rect x="0" y="0" width="180" height="32" rx="16" fill="#f59e0b"/>
+    <circle cx="160" cy="16" r="28" fill="#d97706"/>
+    <circle cx="160" cy="16" r="14" fill="#0369a1"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="40" y="40" width="160" height="44" rx="22" fill="#ffffff" fill-opacity="0.2"/>
+  <text x="120" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="16" fill="#ffffff">PLUMBING</text>
+</svg>

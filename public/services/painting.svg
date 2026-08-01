@@ -1,2 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400"><rect width="640" height="400" fill="#e8f7ef"/><circle cx="520" cy="90" r="70" fill="#b8e7cc"/><rect x="90" y="85" width="360" height="240" rx="28" fill="#fff" stroke="#20845a" stroke-width="10"/><path d="M170 260l80-80 60 60 100-110" fill="none" stroke="#f59e0b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><text x="320" y="370" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#176646">Painting Service</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="paintBg" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="rollerGrad" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+  </defs>
 
+  <rect width="600" height="400" rx="32" fill="url(#paintBg)"/>
+  <circle cx="500" cy="320" r="140" fill="#ffffff" fill-opacity="0.08"/>
+
+  <!-- Paint Swash Background -->
+  <path d="M 120 120 Q 300 60 480 120 L 480 200 Q 300 140 120 200 Z" fill="url(#rollerGrad)" fill-opacity="0.85"/>
+
+  <!-- Paint Roller Tool -->
+  <g transform="translate(180, 100)">
+    <!-- Roller Cylinder -->
+    <rect x="60" y="40" width="180" height="54" rx="16" fill="#ffffff"/>
+    <rect x="70" y="45" width="160" height="44" rx="12" fill="#facc15"/>
+
+    <!-- Metal Arm & Handle -->
+    <path d="M 240 67 L 270 67 L 270 140 L 170 140 L 170 230" stroke="#cbd5e1" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="154" y="210" width="32" height="80" rx="12" fill="#1e293b"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="40" y="40" width="150" height="44" rx="22" fill="#ffffff" fill-opacity="0.2"/>
+  <text x="115" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="16" fill="#ffffff">PAINTING</text>
+</svg>

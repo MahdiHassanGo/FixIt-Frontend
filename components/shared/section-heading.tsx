@@ -10,15 +10,18 @@ export function SectionHeading({
   return (
     <div className="space-y-2">
       {eyebrow ? (
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+        <span className="inline-block rounded-full bg-primary/10 border border-primary/20 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
           {eyebrow}
-        </p>
+        </span>
       ) : null}
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
+        {title}
+      </h2>
       {description ? (
-        <p className="max-w-2xl text-muted-foreground">{description}</p>
+        <p className="max-w-2xl text-base text-muted-foreground leading-relaxed">
+          {description}
+        </p>
       ) : null}
     </div>
   );
 }
-
