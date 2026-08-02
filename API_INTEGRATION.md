@@ -40,5 +40,5 @@ Base URL comes from the server-only `BACKEND_API_URL` environment variable. Auth
 
 1. The API does not store a technician profile-image URL. The frontend uses a local optimized placeholder instead of pretending that an upload is persisted.
 2. Public technician data exposes weekly availability blocks but not already occupied public slots. The booking form therefore displays declared working windows only.
-3. Stripe success and cancellation URLs are controlled by backend environment variables. Point them to the frontend `/payment/success` and `/payment/cancel` routes.
+4. All API error responses return structured `{ success: false, statusCode, message, details }` objects which are presented via toast alerts, inline form errors, or global error boundaries.
 
