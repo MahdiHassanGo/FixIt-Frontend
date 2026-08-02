@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { jsonPrivateApi } from "@/lib/api";
+import { ApiError, jsonPrivateApi } from "@/lib/api";
 import { days } from "@/lib/format";
 import { serviceSchema, technicianProfileSchema } from "@/lib/schemas";
 import type {
@@ -152,11 +152,23 @@ export async function updateBookingStatusAction(
   void _formData;
 
   try {
-    await jsonPrivateApi<Booking>(
-      `/api/technician/bookings/${bookingId}/status`,
-      "PATCH",
-      { status },
-    );
+    try {
+      await jsonPrivateApi<Booking>(
+        `/api/technician/bookings/${bookingId}`,
+        "PATCH",
+        { status },
+      );
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 404) {
+        await jsonPrivateApi<Booking>(
+          `/api/technician/bookings/${bookingId}/status`,
+          "PATCH",
+          { status },
+        );
+      } else {
+        throw error;
+      }
+    }
     revalidatePath("/dashboard/technician", "layout");
     return { success: true, message: `Booking moved to ${status}.` };
   } catch (error) {

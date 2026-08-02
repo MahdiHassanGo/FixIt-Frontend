@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { jsonPrivateApi } from "@/lib/api";
+import { ApiError, jsonPrivateApi } from "@/lib/api";
 import { categorySchema } from "@/lib/schemas";
 import type { ActionState, Category, User } from "@/lib/types";
 import { apiErrorState, zodState } from "@/app/actions/action-helpers";
@@ -16,9 +16,21 @@ export async function updateUserStatusAction(
   void _formData;
 
   try {
-    await jsonPrivateApi<User>(`/api/admin/users/${userId}/status`, "PATCH", {
-      activeStatus,
-    });
+    try {
+      await jsonPrivateApi<User>(`/api/admin/users/${userId}`, "PATCH", {
+        activeStatus,
+        isBlocked: activeStatus === "BLOCKED",
+      });
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 404) {
+        await jsonPrivateApi<User>(`/api/admin/users/${userId}/status`, "PATCH", {
+          activeStatus,
+          isBlocked: activeStatus === "BLOCKED",
+        });
+      } else {
+        throw error;
+      }
+    }
     revalidatePath("/dashboard/admin", "layout");
     return {
       success: true,
