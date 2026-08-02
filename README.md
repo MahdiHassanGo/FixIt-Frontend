@@ -1,6 +1,12 @@
 # FixItNow Frontend
 
 FixItNow is a responsive Next.js App Router frontend for a home-service marketplace. It consumes the backend API from the previous assignment and presents role-specific experiences for Customers, Technicians, and Admins.
+## links
+
+- Frontend repository: `https://github.com/MahdiHassanGo/FixIt-Frontend`
+- Live frontend: `https://fix-it-frontend-bay.vercel.app`
+- Backend API: `https://fix-it-now-6b1c.vercel.app`
+
 
 ## Technology
 
@@ -199,12 +205,7 @@ Update these values if your backend seed data differs:
 - Customer: `customer@fixitnow.local` / `customer123!`
 - Technician: `technician@fixitnow.local` / `technician123!
 
-## Submission links
 
-- Frontend repository: `https://github.com/MahdiHassanGo/FixIt-Frontend`
-- Live frontend: `https://fix-it-frontend-bay.vercel.app`
-- Backend API: `https://fix-it-now-6b1c.vercel.app`
-- Demo video: add after recording
 
 Verify all deployment links and demo credentials before submission.
 
