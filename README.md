@@ -49,6 +49,16 @@ STRIPE_CANCEL_URL=http://localhost:3000/payment/cancel
 
 Replace localhost with the final frontend URL in production.
 
+## Application Showcase
+
+| View | Description | Key Features |
+|---|---|---|
+| **Landing & Hero Page** (`/`) | Home marketplace overview | Modern gradient hero section, 3-step workflow guide, quick browse CTA |
+| **Service Marketplace** (`/services`) | Search & real-time filter catalog | Multi-parameter filtering (Category, Location, Price Range, Min Rating, Sorting), live count indicators |
+| **Technician Portal** (`/dashboard/technician`) | Technician business dashboard | Business earnings summary, active service listings count, job status pipeline (`Accept`, `Start Job`, `Mark Completed`) |
+| **Admin Moderation Portal** (`/dashboard/admin`) | Platform control center | Total user counts, active booking overview, category management, platform revenue tracking |
+| **Customer Portal & Reviews** (`/dashboard/customer`) | Booking management & feedback | Real-time booking state tracking, Stripe checkout button, payment receipts history, 5-star rating & review system |
+
 ## Main frontend routes
 
 | Route | Purpose |
