@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { jsonPrivateApi } from "@/lib/api";
+import { ApiError, jsonPrivateApi } from "@/lib/api";
 import { bookingSchema, profileSchema, reviewSchema } from "@/lib/schemas";
 import type { ActionState, Booking, Review, User } from "@/lib/types";
 import { apiErrorState, zodState } from "@/app/actions/action-helpers";
@@ -107,19 +107,52 @@ export async function createCheckoutAction(
   void _formData;
 
   try {
-    const response = await jsonPrivateApi<{
-      payment: unknown;
-      checkoutUrl: string | null;
-    }>("/api/payments/create-checkout-session", "POST", { bookingId });
+    let responseData: {
+      payment?: unknown;
+      checkoutUrl?: string | null;
+      url?: string | null;
+      redirectUrl?: string | null;
+      gatewayUrl?: string | null;
+    } | null = null;
 
-    if (!response.data.checkoutUrl) {
-      return { success: false, message: "Stripe checkout URL was not returned." };
+    try {
+      const response = await jsonPrivateApi<{
+        payment?: unknown;
+        checkoutUrl?: string | null;
+        url?: string | null;
+        redirectUrl?: string | null;
+        gatewayUrl?: string | null;
+      }>("/api/payments/create", "POST", { bookingId, provider: "STRIPE" });
+      responseData = response.data;
+    } catch (error) {
+      if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
+        const response = await jsonPrivateApi<{
+          payment?: unknown;
+          checkoutUrl?: string | null;
+          url?: string | null;
+          redirectUrl?: string | null;
+          gatewayUrl?: string | null;
+        }>("/api/payments/create-checkout-session", "POST", { bookingId, provider: "STRIPE" });
+        responseData = response.data;
+      } else {
+        throw error;
+      }
+    }
+
+    const checkoutUrl =
+      responseData?.checkoutUrl ||
+      responseData?.url ||
+      responseData?.redirectUrl ||
+      responseData?.gatewayUrl;
+
+    if (!checkoutUrl) {
+      return { success: false, message: "Stripe checkout URL was not returned by the backend server." };
     }
 
     return {
       success: true,
       message: "Redirecting to Stripe Checkout...",
-      checkoutUrl: response.data.checkoutUrl,
+      checkoutUrl,
     };
   } catch (error) {
     return apiErrorState(error);
