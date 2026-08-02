@@ -4,6 +4,8 @@ import { ArrowRight, CircleCheck, ReceiptText, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+import { confirmPaymentAction } from "@/app/actions/customer-actions";
+
 export const metadata: Metadata = { title: "Payment Successful" };
 
 export default async function PaymentSuccessPage({
@@ -12,6 +14,7 @@ export default async function PaymentSuccessPage({
   searchParams: Promise<{ bookingId?: string; session_id?: string }>;
 }) {
   const { bookingId, session_id: sessionId } = await searchParams;
+  await confirmPaymentAction(sessionId, bookingId);
 
   return (
     <div className="mx-auto grid min-h-[68vh] max-w-2xl place-items-center px-4 py-12">

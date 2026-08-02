@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { ApiError, jsonPrivateApi } from "@/lib/api";
+import { ApiError, jsonPrivateApi, publicApi } from "@/lib/api";
 import { bookingSchema, profileSchema, reviewSchema } from "@/lib/schemas";
 import type { ActionState, Booking, Review, User } from "@/lib/types";
 import { apiErrorState, zodState } from "@/app/actions/action-helpers";
@@ -156,5 +156,30 @@ export async function createCheckoutAction(
     };
   } catch (error) {
     return apiErrorState(error);
+  }
+}
+
+export async function confirmPaymentAction(sessionId?: string, bookingId?: string) {
+  if (!sessionId && !bookingId) return;
+
+  try {
+    try {
+      await jsonPrivateApi("/api/payments/confirm", "POST", {
+        sessionId,
+        bookingId,
+        session_id: sessionId,
+      });
+    } catch {
+      await publicApi("/api/payments/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, bookingId, session_id: sessionId }),
+      }, false);
+    }
+    revalidatePath("/dashboard/customer");
+    revalidatePath("/dashboard/technician");
+    revalidatePath("/dashboard/admin");
+  } catch {
+    // Ignore error if webhook already confirmed or confirmation endpoint differs
   }
 }
