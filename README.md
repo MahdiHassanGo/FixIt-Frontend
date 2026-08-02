@@ -186,8 +186,8 @@ REQUESTED ──(technician accepts)──> ACCEPTED ──(verified payment)─
 Update these values if your backend seed data differs:
 
 - Admin: `admin@fixitnow.com` / `admin123`
-- Customer: `customer@fixitnow.com` / `customer123`
-- Technician: `technician@fixitnow.com` / `technician123`
+- Customer: `customer@fixitnow.local` / `customer123!`
+- Technician: `technician@fixitnow.local` / `technician123!
 
 ## Submission links
 
