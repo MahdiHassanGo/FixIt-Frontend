@@ -40,12 +40,23 @@ export async function proxy(request: NextRequest) {
 
   if (!payload && refreshToken && verify(refreshToken, process.env.JWT_REFRESH_SECRET) && process.env.BACKEND_API_URL) {
     try {
-      const response = await fetch(`${process.env.BACKEND_API_URL.replace(/\/$/, "")}/api/auth/refresh-token`, {
+      const baseUrl = process.env.BACKEND_API_URL.replace(/\/$/, "");
+      let response = await fetch(`${baseUrl}/api/auth/refresh`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ refreshToken }),
         cache: "no-store",
       });
+
+      if (!response.ok) {
+        response = await fetch(`${baseUrl}/api/auth/refresh-token`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ refreshToken }),
+          cache: "no-store",
+        });
+      }
+
       const result = await response.json();
       const nextAccessToken = result?.data?.accessToken;
       const nextPayload = verify(nextAccessToken, process.env.JWT_ACCESS_SECRET);

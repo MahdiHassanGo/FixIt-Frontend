@@ -67,7 +67,14 @@ export async function getTechnicianBookings() {
 }
 
 export async function getMyServices() {
-  return (await privateApi<Service[]>("/api/services/my-services")).data;
+  try {
+    return (await privateApi<Service[]>("/api/services/mine")).data;
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) {
+      return (await privateApi<Service[]>("/api/services/my-services")).data;
+    }
+    throw error;
+  }
 }
 
 export async function getAdminUsers() {
