@@ -163,19 +163,15 @@ export async function confirmPaymentAction(sessionId?: string, bookingId?: strin
   if (!sessionId && !bookingId) return;
 
   try {
-    try {
-      await jsonPrivateApi("/api/payments/confirm", "POST", {
-        sessionId,
-        bookingId,
-        session_id: sessionId,
-      });
-    } catch {
-      await publicApi("/api/payments/confirm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId, bookingId, session_id: sessionId }),
-      }, false);
-    }
+    const payload = {
+      bookingId: bookingId || undefined,
+      paymentId: bookingId || undefined,
+      sessionId: sessionId || undefined,
+      session_id: sessionId || undefined,
+      transactionId: sessionId || undefined,
+    };
+
+    await jsonPrivateApi("/api/payments/confirm", "POST", payload);
     revalidatePath("/dashboard/customer");
     revalidatePath("/dashboard/technician");
     revalidatePath("/dashboard/admin");
