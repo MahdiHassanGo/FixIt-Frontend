@@ -160,18 +160,14 @@ export async function createCheckoutAction(
 }
 
 export async function confirmPaymentAction(sessionId?: string, bookingId?: string) {
-  if (!sessionId && !bookingId) return;
+  if (!sessionId) return;
 
   try {
-    const payload = {
+    await jsonPrivateApi("/api/payments/confirm", "POST", {
+      provider: "STRIPE",
+      sessionId,
       bookingId: bookingId || undefined,
-      paymentId: bookingId || undefined,
-      sessionId: sessionId || undefined,
-      session_id: sessionId || undefined,
-      transactionId: sessionId || undefined,
-    };
-
-    await jsonPrivateApi("/api/payments/confirm", "POST", payload);
+    });
     revalidatePath("/dashboard/customer");
     revalidatePath("/dashboard/technician");
     revalidatePath("/dashboard/admin");
