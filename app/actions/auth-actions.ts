@@ -16,6 +16,9 @@ function safeRedirect(value: string) {
   return value.startsWith("/") && !value.startsWith("//") ? value : null;
 }
 
+/**
+ * Handles user login, validates input, sets HTTP-only auth cookies, and redirects to dashboard.
+ */
 export async function loginAction(
   redirectTo: string,
   _previousState: ActionState,
