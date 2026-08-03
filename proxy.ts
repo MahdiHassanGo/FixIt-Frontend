@@ -4,7 +4,15 @@ import { NextResponse } from "next/server";
 import type { Role } from "@/lib/types";
 
 const AUTH_ROUTES = ["/login", "/register", "/auth/login", "/auth/register"];
-const PUBLIC_ROUTES = ["/", "/services", "/technicians", "/payment/success", "/payment/cancel"];
+const PUBLIC_ROUTES = [
+  "/",
+  "/services",
+  "/technicians",
+  "/payment/success",
+  "/payment/cancel",
+  "/payment-success",
+  "/payment-cancel",
+];
 const ROLES: Role[] = ["CUSTOMER", "TECHNICIAN", "ADMIN"];
 
 type AuthPayload = JwtPayload & { role: Role };
