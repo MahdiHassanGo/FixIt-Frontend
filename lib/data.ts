@@ -15,31 +15,61 @@ export async function getCurrentUser() {
     const response = await privateApi<User>("/api/auth/me");
     return response.data;
   } catch (error) {
-    if (error instanceof ApiError && error.status === 401) return null;
-    throw error;
+    return null;
   }
 }
 
 export async function getCategories() {
-  return (await publicApi<Category[]>("/api/categories")).data;
+  try {
+    const response = await publicApi<Category[]>("/api/categories");
+    return response.data || [];
+  } catch (error) {
+    console.error("Failed to fetch categories:", error);
+    return [];
+  }
 }
 
 export async function getServices(query = "") {
-  return publicApi<Service[]>(`/api/services${query ? `?${query}` : ""}`);
+  try {
+    return await publicApi<Service[]>(`/api/services${query ? `?${query}` : ""}`);
+  } catch (error) {
+    console.error("Failed to fetch services:", error);
+    return {
+      success: false,
+      data: [],
+      meta: { page: 1, limit: 10, total: 0, totalPage: 1 },
+    };
+  }
 }
 
 export async function getService(id: string) {
-  return (await publicApi<Service>(`/api/services/${id}`)).data;
+  try {
+    const response = await publicApi<Service>(`/api/services/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to fetch service ${id}:`, error);
+    return null;
+  }
 }
 
 export async function getTechnicians(query = "") {
-  return publicApi<TechnicianProfile[]>(
-    `/api/technicians${query ? `?${query}` : ""}`,
-  );
+  try {
+    return await publicApi<TechnicianProfile[]>(
+      `/api/technicians${query ? `?${query}` : ""}`,
+    );
+  } catch (error) {
+    console.error("Failed to fetch technicians:", error);
+    return {
+      success: false,
+      data: [],
+      meta: { page: 1, limit: 10, total: 0, totalPage: 1 },
+    };
+  }
 }
 
 export async function getTechnician(id: string) {
-  return (await publicApi<TechnicianProfile>(`/api/technicians/${id}`)).data;
+  const response = await publicApi<TechnicianProfile>(`/api/technicians/${id}`);
+  return response.data;
 }
 
 export async function getCustomerBookings() {
