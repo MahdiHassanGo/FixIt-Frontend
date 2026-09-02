@@ -16,10 +16,7 @@ export class ApiError extends Error {
 }
 
 function getBaseUrl() {
-  const baseUrl = process.env.BACKEND_API_URL;
-  if (!baseUrl) {
-    throw new Error("BACKEND_API_URL is missing in .env.local");
-  }
+  const baseUrl = process.env.BACKEND_API_URL || "https://fix-it-now-6b1c.vercel.app";
   return baseUrl.replace(/\/$/, "");
 }
 
