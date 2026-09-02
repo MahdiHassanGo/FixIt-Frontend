@@ -28,7 +28,7 @@ export default async function AvailabilityPage() {
             <div><CardTitle>Working hours</CardTitle><p className="text-sm text-muted-foreground">Saving replaces the previous weekly schedule.</p></div>
           </div>
         </CardHeader>
-        <CardContent className="p-5 sm:p-6"><AvailabilityForm availability={fullProfile.availability || []} /></CardContent>
+        <CardContent className="p-5 sm:p-6"><AvailabilityForm availability={fullProfile?.availability || []} /></CardContent>
       </Card>
     </div>
   );

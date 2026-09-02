@@ -15,7 +15,7 @@ type Props = { params: Promise<{ id: string }>; searchParams: Promise<{ serviceI
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const technician = await getTechnician((await params).id);
-    return { title: technician.user?.name || "Technician" };
+    return { title: technician?.user?.name || "Technician" };
   } catch {
     return { title: "Technician" };
   }
@@ -27,6 +27,7 @@ export default async function TechnicianProfilePage({ params, searchParams }: Pr
 
   try {
     technician = await getTechnician(id);
+    if (!technician) notFound();
   } catch (error) {
     if (error instanceof ApiError && error.status === 404) notFound();
     throw error;

@@ -35,6 +35,7 @@ export default async function PaymentInitiationPage({
 
   try {
     booking = await getBooking(id);
+    if (!booking) notFound();
   } catch (error) {
     if (
       error instanceof ApiError &&

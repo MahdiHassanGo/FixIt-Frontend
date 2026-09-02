@@ -68,54 +68,88 @@ export async function getTechnicians(query = "") {
 }
 
 export async function getTechnician(id: string) {
-  const response = await publicApi<TechnicianProfile>(`/api/technicians/${id}`);
-  return response.data;
+  try {
+    const response = await publicApi<TechnicianProfile>(`/api/technicians/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to fetch technician ${id}:`, error);
+    return null;
+  }
 }
 
 export async function getCustomerBookings() {
-  return (
-    await privateApi<Booking[]>("/api/bookings")
-  ).data;
+  try {
+    return (await privateApi<Booking[]>("/api/bookings")).data || [];
+  } catch (error) {
+    console.error("Failed to fetch customer bookings:", error);
+    return [];
+  }
 }
 
 export async function getBooking(id: string) {
-  return (
-    await privateApi<Booking>(
-      `/api/bookings/${id}`,
-    )
-  ).data;
+  try {
+    return (await privateApi<Booking>(`/api/bookings/${id}`)).data;
+  } catch (error) {
+    console.error(`Failed to fetch booking ${id}:`, error);
+    return null;
+  }
 }
 
 export async function getCustomerPayments() {
-  return (
-    await privateApi<Payment[]>("/api/payments")
-  ).data;
+  try {
+    return (await privateApi<Payment[]>("/api/payments")).data || [];
+  } catch (error) {
+    console.error("Failed to fetch customer payments:", error);
+    return [];
+  }
 }
 
 export async function getTechnicianBookings() {
-  return (await privateApi<Booking[]>("/api/technician/bookings")).data;
+  try {
+    return (await privateApi<Booking[]>("/api/technician/bookings")).data || [];
+  } catch (error) {
+    console.error("Failed to fetch technician bookings:", error);
+    return [];
+  }
 }
 
 export async function getMyServices() {
   try {
-    return (await privateApi<Service[]>("/api/services/mine")).data;
+    return (await privateApi<Service[]>("/api/services/mine")).data || [];
   } catch (error) {
-    if (error instanceof ApiError && error.status === 404) {
-      return (await privateApi<Service[]>("/api/services/my-services")).data;
+    try {
+      return (await privateApi<Service[]>("/api/services/my-services")).data || [];
+    } catch {
+      console.error("Failed to fetch my services:", error);
+      return [];
     }
-    throw error;
   }
 }
 
 export async function getAdminUsers() {
-  return (await privateApi<User[]>("/api/admin/users")).data;
+  try {
+    return (await privateApi<User[]>("/api/admin/users")).data || [];
+  } catch (error) {
+    console.error("Failed to fetch admin users:", error);
+    return [];
+  }
 }
 
 export async function getAdminBookings() {
-  return (await privateApi<Booking[]>("/api/admin/bookings")).data;
+  try {
+    return (await privateApi<Booking[]>("/api/admin/bookings")).data || [];
+  } catch (error) {
+    console.error("Failed to fetch admin bookings:", error);
+    return [];
+  }
 }
 
 export async function getAdminPayments() {
-  return (await privateApi<Payment[]>("/api/admin/payments")).data;
+  try {
+    return (await privateApi<Payment[]>("/api/admin/payments")).data || [];
+  } catch (error) {
+    console.error("Failed to fetch admin payments:", error);
+    return [];
+  }
 }
 
